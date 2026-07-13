@@ -9,6 +9,7 @@
     "restartPolicyType": "ON_FAILURE",
     "healthcheckPath": "/",
     "healthcheckTimeout": 120,
-    "watchPatterns": ["**/*.php", "Dockerfile", "entrypoint.sh"]
+    "healthcheckInterval": 30,
+    "watchPatterns": ["**/*.php", "Dockerfile", "entrypoint.sh", "docker-compose.yml"]
   }
 }
