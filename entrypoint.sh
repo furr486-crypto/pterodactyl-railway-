@@ -1,5 +1,9 @@
 #!/bin/ash
 
+# Pastikan direktori yang dibutuhkan ada sebelum menjalankan layanan
+mkdir -p /var/log/supervisord
+mkdir -p /app/var
+
 # Fungsi untuk mendeteksi apakah database sudah siap menerima koneksi
 echo "Memulai inisialisasi Pterodactyl Panel..."
 echo "Menunggu database terhubung di port $DB_PORT..."
