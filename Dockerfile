@@ -1,13 +1,13 @@
 FROM ghcr.io/pterodactyl/panel:latest
 
-# Port default yang akan digunakan oleh web server Nginx di dalam container
+# Port yang dipetakan oleh web server Nginx internal
 EXPOSE 80
 
-# Menyalin skrip inisialisasi kustom ke direktori utama
+# Salin skrip inisialisasi kustom
 COPY entrypoint.sh /entrypoint.sh
 
-# Memberikan izin eksekusi pada skrip entrypoint
+# Berikan izin eksekusi
 RUN chmod +x /entrypoint.sh
 
-# Menetapkan skrip sebagai titik masuk utama container
+# Set skrip sebagai entrypoint utama
 ENTRYPOINT ["/bin/ash", "/entrypoint.sh"]
