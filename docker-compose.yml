@@ -12,40 +12,19 @@ services:
       - APP_KEY=${APP_KEY}
       - APP_URL=${APP_URL}
       - APP_TIMEZONE=Asia/Jakarta
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=panel
-      - DB_USERNAME=pterodactyl
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_CONNECTION=redis
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
       - panel_data:/app/var
-    depends_on:
-      - db
-      - redis
-
-  db:
-    image: mariadb:10.5
-    environment:
-      - MYSQL_DATABASE=panel
-      - MYSQL_USER=pterodactyl
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-    volumes:
-      - db_data:/var/lib/mysql
-
-  redis:
-    image: redis:alpine
-    command: redis-server --requirepass ${REDIS_PASSWORD}
-    volumes:
-      - redis_data:/data
 
 volumes:
   panel_data:
-  db_data:
-  redis_data:
